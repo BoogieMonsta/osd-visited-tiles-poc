@@ -1,27 +1,23 @@
-# LblsnVisitedTilesPoc
+# OsdVisitedTilesPoc
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.11.
+[![Netlify Status](https://api.netlify.com/api/v1/badges/2dfa6399-f822-44b6-9ff5-5626fa4226ff/deploy-status)](https://app.netlify.com/sites/osd-visited-tiles-poc/deploys)
 
-## Development server
+This Proof of Concept demonstrates the ability to track and visualize the tiles visited in an OpenSeadragon viewer as colored overlays in the viewer navigator.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Grid Based Tracking
 
-## Code scaffolding
+The viewer navigator is divided into a grid of cells. Cells viewed by the user are tracked. Each cell is identified by its coordinates. When a cell is viewed for the first time, an overlay is added to the cell and stored in the `viewedCells` set and `overlays` map.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Opacity Proportional to Zoom
 
-## Build
+The opacity of a grid cell is set according to the current zoom level. It's calculated as a proportion of the current zoom level to the maximum zoom level. If a cell is visited again at a higher zoom, the opacity of the cell is updated to reflect the higher value.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Debouncing
 
-## Running unit tests
+`zoom` and `pan` events are handled after a period of inactivity, reducing the number of times the event handler is called.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Persistence in localStorage
 
-## Running end-to-end tests
+Viewed cells and their overlays are stored in localStorage. This allows the application to remember viewed cells even after a page refresh.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+**TODO:** In the Labelson implementation, remove data from localStorage when opening a new slide

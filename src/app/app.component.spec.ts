@@ -12,16 +12,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'lblsn-visited-tiles-poc'`, () => {
+  it(`should have as title 'osd-visited-tiles-poc'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('lblsn-visited-tiles-poc');
+    expect(app.title).toEqual('osd-visited-tiles-poc');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('lblsn-visited-tiles-poc app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('osd-visited-tiles-poc app is running!');
   });
 });
